@@ -19,12 +19,12 @@ const CollectionsSearch = () => {
 
     const onSearch = search => {
         console.log("Search: ", search)
-        // setAppState(search);
+        setAppState({
+            ...appState,
+            collectionName: search
+        });
 
-        getCollection(search).then(data => {
-            // setAppState(data)
-
-        })
+        getCollection(search);
     }
 
     const getCollection = async (collection) => {
@@ -35,23 +35,22 @@ const CollectionsSearch = () => {
                 collection: `${collection}`
             },
         })
-
         let data = response.data.assets
 
-        console.log("getCollection: ",data[0])
+        console.log("getCollection: ",data)
 
-        setAppState(data);
-
-        return data;
+        setAppState({
+            ...appState,
+            assets: data
+        });
     }
 
     return(
         <>
             <div className='collection_search'>
                 <Search
-
                     placeholder="input search text"
-                    onChange={onChange}
+                    // onChange={onChange}
                     // addonAfter={<RightOutlined/>}
                     enterButton={
                         <Button

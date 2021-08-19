@@ -14,33 +14,6 @@ const { Header, Content, Footer } = Layout;
 
 const CollectionsPage = () => {
 
-    // const collection = 'cryptopunks'
-    const [collectionName, setCollectionName ] = useState();
-
-    // const getCollection = async (collection) => {
-    //     let response = await axios({
-    //         method: 'GET',
-    //         url: `https://api.opensea.io/api/v1/assets`,
-    //         params: {
-    //             collection: `${collection}`
-    //         },
-    //     })
-    //
-    //     let data = response.data
-    //     setAssets(data)
-    //
-    //     console.log(data)
-    //
-    //     return data;
-    // }
-
-    const [ assets, setAssets ] = useState();
-
-    // useEffect(() => {
-    //     getCollection()
-    //     console.log("USe effect")
-    // }, [])
-
     return(
         <>
             <Layout className='collections_layout'>

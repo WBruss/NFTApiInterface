@@ -1,10 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-import axios from 'axios';
+import {AppContext} from "../../App";
 
 // Antd
-import { Table, Image } from 'antd';
-import {AppContext} from "../../App";
+import { Table, Image, Button } from 'antd';
 
 const CollectionAssets = () => {
 
@@ -95,9 +94,6 @@ const CollectionAssets = () => {
     );
 
 
-    console.log("AppState: ", appState);
-
-
     const columns = [
         {
             title: 'Token ID',
@@ -184,12 +180,10 @@ const CollectionAssets = () => {
     }
 
 
-    const selectedRKeys = setSelectedRowKeys;
+    let selectedRKeys = setSelectedRowKeys;
     const rowSelection = {
         selectedRKeys,
-        onChange:(selected) => {
-            console.log("Selected: ", selected)
-        },
+        onChange: onSelectChange,
         selections: [
             Table.SELECTION_ALL,
             Table.SELECTION_INVERT,
@@ -229,15 +223,30 @@ const CollectionAssets = () => {
         ]
     };
 
+    const onBid = () => {
+        console.log("selectedRKeys: ", selectedRKeys)
+        console.log("selectedRowKeys: ", selectedRowKeys)
+        setAppState({
+            ...appState,
+            selectedAssets: selectedRowKeys.selectedRKeys.selectedRKeys
+        })
+        console.log("OnBid: ", appState)
+        setSelectedRowKeys([])
+        selectedRKeys=selectedRowKeys
+    }
+
     return(
         <>
+            <Button
+                onClick={onBid}
+            >Bid</Button>
             <Table
                 height={'80%'}
                 width={200}
                 rowSelection={rowSelection}
                 columns={columns}
                 rowKey={record => record.id}
-                dataSource={appState}
+                dataSource={appState.assets}
                 pagination={{ pageSize: 50 }} scroll={{ y: '24rem'}}
             />;
         </>
