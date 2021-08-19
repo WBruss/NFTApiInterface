@@ -1,0 +1,29 @@
+.collections_layout{
+    height: 100vh;
+}
+
+.collections_header{
+    padding: 0 5%;
+    color: azure;
+}
+
+.collections_content{
+    padding: 0 5%;
+    height: 100%;
+}
+
+.collection_search{
+    width: 50%;
+    display: flex;
+    margin: 2.5% auto;
+    border: #282c34 solid;
+    border-radius: 0.5rem;
+    padding: 1%;
+}
+
+.collections_footer{
+    text-align: center;
+    color: azure;
+    background-color: #282c34;
+}
+
